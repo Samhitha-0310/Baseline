@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0B0B0D"/>
+  <rect x="48" y="48" width="1104" height="534" fill="none" stroke="#C9A227" stroke-width="1"/>
+  <path d="M48 96 V48 H96" fill="none" stroke="#C9A227" stroke-width="2"/>
+  <path d="M1104 48 H1152 V96" fill="none" stroke="#C9A227" stroke-width="2"/>
+  <path d="M48 534 V582 H96" fill="none" stroke="#C9A227" stroke-width="2"/>
+  <path d="M1104 582 H1152 V534" fill="none" stroke="#C9A227" stroke-width="2"/>
+  <text x="88" y="210" fill="#C9A227" font-family="Georgia, Times New Roman, serif" font-size="18" letter-spacing="6">BASELINE CORP</text>
+  <text x="88" y="310" fill="#F5F3EE" font-family="Georgia, Times New Roman, serif" font-size="58" font-weight="500">YOUR BRAND. YOUR STORY.</text>
+  <text x="88" y="386" fill="#E0C15A" font-family="Georgia, Times New Roman, serif" font-size="58" font-weight="500">OUR LENS.</text>
+  <path d="M88 430 H248" stroke="#C9A227" stroke-width="2"/>
+  <text x="88" y="490" fill="#A5A5A5" font-family="Inter, Segoe UI, sans-serif" font-size="22">Creative content studio</text>
+</svg>

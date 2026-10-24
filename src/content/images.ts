@@ -1,0 +1,165 @@
+export type StudioImage = {
+  id: string;
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  position?: string;
+};
+
+export const images = {
+  burgerSesame: {
+    id: "burger-sesame",
+    src: "/images/food/burger-sesame.png",
+    alt: "Sesame chicken burger with fries and a small sauce cup on a wooden table.",
+    width: 1020,
+    height: 1425,
+    position: "center 58%",
+  },
+  burgerNight: {
+    id: "burger-night",
+    src: "/images/food/burger-night.png",
+    alt: "Burger and fries on a white platter, photographed at night with city lights behind the table.",
+    width: 1025,
+    height: 1457,
+    position: "center 72%",
+  },
+  bowlSesame: {
+    id: "bowl-sesame",
+    src: "/images/food/bowl-sesame.png",
+    alt: "White bowl of glazed chicken with sesame, two sauce cups, and a blue drink at the edge of the table.",
+    width: 1025,
+    height: 1221,
+    position: "center 62%",
+  },
+  bowlWindow: {
+    id: "bowl-window",
+    src: "/images/food/bowl-window.png",
+    alt: "Pale bowl of sauced chicken with two metal cups, photographed in window light beside a wooden chair.",
+    width: 1025,
+    height: 1448,
+    position: "center 70%",
+  },
+  pizzaBoard: {
+    id: "pizza-board",
+    src: "/images/food/pizza-board.jpg",
+    alt: "Thin pizza on a round wooden board with olives, peppers, and small condiment bowls.",
+    width: 1616,
+    height: 1080,
+    position: "center 55%",
+  },
+  pizzaDark: {
+    id: "pizza-dark",
+    src: "/images/food/pizza-dark.png",
+    alt: "Pizza on a wooden paddle with spice, herb, and sauce bowls against a dark backdrop.",
+    width: 1025,
+    height: 1534,
+    position: "center 58%",
+  },
+  pizzaLounge: {
+    id: "pizza-lounge",
+    src: "/images/food/pizza-lounge.jpg",
+    alt: "Pizza on a wooden board set on a mottled table, with yellow lounge chairs in the background.",
+    width: 683,
+    height: 1024,
+    position: "center 68%",
+  },
+  loadedBowl: {
+    id: "loaded-bowl",
+    src: "/images/food/loaded-bowl.jpg",
+    alt: "Dark bowl of loaded fries with chicken, cabbage, and sauce on a wooden surface.",
+    width: 1616,
+    height: 1080,
+    position: "center 45%",
+  },
+  garnishDrop: {
+    id: "garnish-drop",
+    src: "/images/food/garnish-drop.jpg",
+    alt: "A gloved hand drops garnish onto a fried fillet plated with fries and two sauces.",
+    width: 1616,
+    height: 1080,
+    position: "center 40%",
+  },
+  friedPeri: {
+    id: "fried-peri",
+    src: "/images/food/fried-peri.png",
+    alt: "Crispy fried fillet on a white plate with fries and two sauce cups.",
+    width: 1025,
+    height: 1301,
+    position: "center 62%",
+  },
+  friedFusion: {
+    id: "fried-fusion",
+    src: "/images/food/fried-fusion.png",
+    alt: "Crispy fried fillet with fries and three labeled sauce cups on a dark wood table.",
+    width: 1025,
+    height: 1337,
+    position: "center 58%",
+  },
+  latteOverhead: {
+    id: "latte-overhead",
+    src: "/images/cafe/latte-overhead.png",
+    alt: "Overhead view of a latte with rose petals, coffee beans, and a café saucer mark on a wood table.",
+    width: 1025,
+    height: 1317,
+    position: "center center",
+  },
+  latteHand: {
+    id: "latte-hand",
+    src: "/images/cafe/latte-hand.jpg",
+    alt: "A gloved hand sprinkles dried rose petals over a latte on a wooden table.",
+    width: 684,
+    height: 1024,
+    position: "center 62%",
+  },
+  wrapPlate: {
+    id: "wrap-plate",
+    src: "/images/cafe/wrap-plate.jpg",
+    alt: "A paper-wrapped roll cut in half on a white oval plate with ketchup and spice bowls.",
+    width: 683,
+    height: 1024,
+    position: "center 42%",
+  },
+  cocktailGarnish: {
+    id: "cocktail-garnish",
+    src: "/images/drinks/cocktail-garnish.jpg",
+    alt: "Tall layered blue drink garnished with mint, lime, and a pineapple leaf.",
+    width: 684,
+    height: 1024,
+    position: "center 55%",
+  },
+  cocktailStudio: {
+    id: "cocktail-studio",
+    src: "/images/drinks/cocktail-studio.jpg",
+    alt: "Layered blue and red drink in a tall glass, photographed against a white studio background.",
+    width: 684,
+    height: 1024,
+    position: "center 55%",
+  },
+  cocktailNight: {
+    id: "cocktail-night",
+    src: "/images/drinks/cocktail-night.jpg",
+    alt: "Layered blue cocktail with mint and citrus garnish, photographed against black.",
+    width: 684,
+    height: 1024,
+    position: "center 55%",
+  },
+  cocktailsPair: {
+    id: "cocktails-pair",
+    src: "/images/drinks/cocktails-pair.jpg",
+    alt: "Two tall drinks on dark wood: a layered blue cocktail in front and a darker glass behind it.",
+    width: 683,
+    height: 1024,
+    position: "center 58%",
+  },
+  icedCoffee: {
+    id: "iced-coffee",
+    src: "/images/drinks/iced-coffee.jpg",
+    alt: "Iced coffee in a tall glass on a deep red cloth, with a yellow chair out of focus behind it.",
+    width: 684,
+    height: 1024,
+    position: "center 52%",
+  },
+} as const satisfies Record<string, StudioImage>;
+
+export type ImageKey = keyof typeof images;
