@@ -1,4 +1,5 @@
 import { DEFAULT_INBOX } from "../shared/relay";
+import { writeResponse, type NodeReq, type NodeRes } from "./nodeHandler";
 
 function smtpConfigured() {
   const host = process.env.SMTP_HOST?.trim() ?? "";
@@ -17,4 +18,13 @@ export function GET() {
     contactTo: process.env.CONTACT_TO?.trim() || DEFAULT_INBOX,
     htmlTemplate: smtpConfigured(),
   });
+}
+
+export default async function handler(req: NodeReq, res: NodeRes) {
+  const method = req.method ?? "GET";
+  if (method !== "GET" && method !== "HEAD") {
+    res.status(405).json({ ok: false, error: "Method not allowed." });
+    return;
+  }
+  await writeResponse(res, GET());
 }

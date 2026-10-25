@@ -8,6 +8,24 @@ import {
   type RelayResult,
 } from "../shared/relay";
 import { validateInquiry } from "../server/validate";
+import { readJsonBody, writeResponse, type NodeReq, type NodeRes } from "./nodeHandler";
+
+export default async function handler(req: NodeReq, res: NodeRes) {
+  if ((req.method ?? "") !== "POST") {
+    res.status(405).json({ ok: false, error: "Method not allowed." });
+    return;
+  }
+  await writeResponse(
+    res,
+    await POST(
+      new Request("https://baseline.local/api/inquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: readJsonBody(req),
+      }),
+    ),
+  );
+}
 
 export async function POST(request: Request) {
   const raw = await request.text();
