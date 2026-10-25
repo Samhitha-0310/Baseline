@@ -62,6 +62,7 @@ export type ApiInquiryResponse = {
 export type SubmitResult =
   | { mode: "sent" }
   | { mode: "invalid"; errors: FieldErrors }
+  | { mode: "activate" }
   | { mode: "error" };
 
 function payload(values: Inquiry) {
@@ -86,7 +87,7 @@ async function smtpConfigured() {
   }
 }
 
-async function storeInquiry(values: Inquiry, clientDelivery: "sent" | "failed") {
+async function storeInquiry(values: Inquiry, clientDelivery: "sent" | "confirm" | "failed") {
   const endpoint = import.meta.env.VITE_CONTACT_ENDPOINT?.trim() || "/api/inquiries";
   const response = await fetch(endpoint, {
     method: "POST",
@@ -127,8 +128,10 @@ async function deliverFromBrowser(values: Inquiry) {
 }
 
 /**
- * Submits the inquiry to the configured FormSubmit AJAX endpoint.
- * Success is returned only when that response, or SMTP, confirms acceptance.
+ * Browser FormSubmit is the production delivery path when SMTP is not set.
+ * Success is returned only after FormSubmit or SMTP confirms acceptance.
+ * An "activate" result means FormSubmit received the first request and emailed
+ * an Activate Form link — that is not delivery, and we do not report success.
  */
 export async function submitInquiry(values: Inquiry): Promise<SubmitResult> {
   const useSmtp = await smtpConfigured();
@@ -149,11 +152,17 @@ export async function submitInquiry(values: Inquiry): Promise<SubmitResult> {
     return { mode: "sent" };
   }
 
+  if (relay.delivery === "confirm") {
+    void storeInquiry(values, "confirm").catch(() => undefined);
+    return { mode: "activate" };
+  }
+
   if (!useSmtp) {
     try {
       const stored = await storeInquiry(values, "failed");
       if (stored.httpStatus === 400 && stored.errors) return { mode: "invalid", errors: stored.errors };
       if (stored.emailSent || stored.delivery === "sent") return { mode: "sent" };
+      if (stored.delivery === "confirm") return { mode: "activate" };
     } catch {
       // Both delivery attempts failed.
     }

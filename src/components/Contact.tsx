@@ -139,7 +139,11 @@ export function Contact() {
         return;
       }
       setStatus("error");
-      setFormError("We couldn't submit your inquiry. Please try again.");
+      setFormError(
+        result.mode === "activate"
+          ? `Check ${brand.email} for FormSubmit's "Activate Form" email for this website, click Activate Form, then submit again. That step is required once per domain and cannot be completed from this page.`
+          : "We couldn't submit your inquiry. Please try again.",
+      );
     } catch {
       setStatus("error");
       setFormError(`We couldn't deliver your inquiry. Email ${brand.email} directly.`);

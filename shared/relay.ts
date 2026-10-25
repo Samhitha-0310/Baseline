@@ -1,6 +1,11 @@
 export const DEFAULT_INBOX = "baselinecorp1@gmail.com";
 
-/** Public FormSubmit form id for the Baseline inbox. It is not a password. */
+/**
+ * Public FormSubmit form id for baselinecorp1@gmail.com. It is not a password.
+ * FormSubmit sends a one-time "Activate Form" email per website origin.
+ * That click must be done in the inbox. Activating one Vercel URL does not
+ * activate a different domain. Do not store or invent an activation token.
+ */
 export const FORM_SUBMIT_ID = "34fb17698031e07eed867225e936168e";
 
 export type RelayInquiry = {
@@ -39,6 +44,7 @@ export function formSubmitPayload(inquiry: RelayInquiry) {
       : `New inquiry — ${inquiry.fullName}`,
     _replyto: inquiry.email,
     _template: "table",
+    _captcha: false,
   };
 }
 

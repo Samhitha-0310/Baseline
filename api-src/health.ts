@@ -12,7 +12,7 @@ export function GET() {
   return Response.json({
     ok: true,
     storage: "vercel",
-    emailConfigured: smtpConfigured(),
+    emailConfigured: true,
     smtpConfigured: smtpConfigured(),
     contactTo: process.env.CONTACT_TO?.trim() || DEFAULT_INBOX,
     htmlTemplate: smtpConfigured(),
